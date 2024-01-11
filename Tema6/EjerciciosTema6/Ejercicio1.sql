@@ -12,7 +12,7 @@ DROP TABLE IF EXISTS autor CASCADE
 CREATE TABLE autor (
 	dni					VARCHAR (9),
 	nombre				VARCHAR (100) NOT NULL,
-	nacionalidad		VARCHAR (80)
+	nacionalidad		VARCHAR (80),
 	CONSTRAINT pk_dni PRIMARY KEY (dni)
 )
 
@@ -30,14 +30,14 @@ CREATE TABLE genero (
 	id_genero 			SERIAL,
 	nombre				VARCHAR (100) NOT NULL,
 	descripcion 		TEXT,
-	CONSTRAINT pk_id_genero PRIMARY KEY 
+	CONSTRAINT pk_id_genero PRIMARY KEY (id_genero)
 )
 
 DROP TABLE IF EXISTS edicion CASCADE
 CREATE TABLE edicion (
 	isbn 				VARCHAR (13),
-	fecha_publicacion	DATE
-	cantidad 			INTEGER
+	fecha_publicacion	DATE,
+	cantidad 			INTEGER,
 	CONSTRAINT cantidad_ediciones CHECK (cantidad > 0),
 	CONSTRAINT pk_edicion PRIMARY KEY (isbn, fecha_publicacion)
 )
