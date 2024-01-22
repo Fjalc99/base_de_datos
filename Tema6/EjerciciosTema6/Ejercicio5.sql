@@ -14,7 +14,7 @@ CREATE TABLE alumnos (
 	direccion		VARCHAR(200),
 	telefono		VARCHAR(30),
 	edad			SMALLINT,
-	empresa			VARCHAR(200),
+	empresa			VARCHAR(200), --Tiene que tener el mismo tamaño que su clave externa
 	CONSTRAINT pk_dni PRIMARY KEY (dni)
 ); 
 
