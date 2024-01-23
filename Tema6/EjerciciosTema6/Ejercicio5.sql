@@ -72,6 +72,7 @@ INSERT INTO empresas (cif, nombre, direccion, telefono)
 VALUES (123654789,'Biciletas Manolo','Conde Bustillo 17','955879632'),
 	   (365987412,'Reparaciones Paco','Poligono pisa 32','955741963'),
 	   (698523741,'Fruteria Rocio','Avd Palmera 45','955624857')
+RETURNING *;
 	   
 INSERT INTO alumnos (nombre, dni, direccion, telefono, edad, empresa)
 VALUES ('Paquito','12345678E','Avd andalucía nº43',658741239,26,123654789),
@@ -92,12 +93,14 @@ VALUES ('Paquito','12345678E','Avd andalucía nº43',658741239,26,123654789),
 	   ('Bruno','12345848S','Calle asturias nº4',658746789,27,698523741),
 	   ('Lorenzo','12334678Z','Calle galicia nº14',658749849,41,698523741),
 	   ('Paco','12345665Y','Calle valencia nº34',658741229,31,698523741)
+RETURNING *;
 	   
 INSERT INTO tipos_cursos (cod_curso, duracion, programa, titulo)
 VALUES (125,200,'Informática','Ingeniero informático'),
 	   (198,260,'Telecomunicaciones','Ingeniero en telecomunicaciones'),
 	   (154,500,'Programacion','Desarrollador de aplicaciones'),
 	   (165,400,'Proyectos de grafica publicitaria','Diseñadora gráfica')
+RETURNING *;
 	   
 INSERT INTO cursos (n_concreto, fecha_inicio, fecha_fin, dni_profesor, tipo_curso)
 VALUES (4,'15-04-2023','20-06-2023','12457896J',125),
@@ -120,6 +123,7 @@ VALUES (4,'15-04-2023','20-06-2023','12457896J',125),
 	   (22,'07-05-2023','03-09-2023','5874126I',165),
 	   (23,'01-01-2023','23-04-2023','4253691X',165),
 	   (24,'17-03-2023','20-07-2023','1247895M',165)
+RETURNING *;
 	   
 INSERT INTO profesores (dni, nombre, apellido, telefono, direccion)
 VALUES 	('12457896J','Manuel','Rodriguez Franco','668741987','Calle sevilla nº10'),
@@ -142,5 +146,7 @@ VALUES 	('12457896J','Manuel','Rodriguez Franco','668741987','Calle sevilla nº1
 		('5874126I','Rafael','Alberti Manco','657159846','Calle puerto nº21'),
 		('4253691X','Angela','Moreno Ortiz','658714789','Calle puerta del puente nº16'),
 		('1247895M','Gabriella','Medina Salazar','658974123','Calle venezuela nº36')
-		
+RETURNING *;
 	 
+UPDATE alumnos SET nombre = 'Lucas'
+WHERE nombre = 'Jose';
