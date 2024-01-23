@@ -60,9 +60,9 @@ CREATE TABLE tipos_cursos (
 
 
 
-ALTER TABLE alumnos_asisten ADD CONSTRAINT fk_alumnos_asisten_alumnos FOREIGN KEY (dni) REFERENCES alumnos (dni);
-ALTER TABLE alumnos ADD CONSTRAINT fk_alumnos_empresas FOREIGN KEY (empresa) REFERENCES empresas (cif);
-ALTER TABLE alumnos_asisten ADD CONSTRAINT fk_alumnos_asisten_curso FOREIGN KEY (n_concreto) REFERENCES cursos (n_concreto); 
+ALTER TABLE alumnos_asisten ADD CONSTRAINT fk_alumnos_asisten_alumnos FOREIGN KEY (dni) REFERENCES alumnos (dni) ON DELETE  CASCADE;
+ALTER TABLE alumnos ADD CONSTRAINT fk_alumnos_empresas FOREIGN KEY (empresa) REFERENCES empresas (cif) ON DELETE SET NULL;
+ALTER TABLE alumnos_asisten ADD CONSTRAINT fk_alumnos_asisten_curso FOREIGN KEY (n_concreto) REFERENCES cursos (n_concreto) ON DELETE CASCADE;
 ALTER TABLE cursos ADD CONSTRAINT fk_cursos_profesores FOREIGN KEY (dni_profesor) REFERENCES profesores (dni) ON DELETE SET NULL;
 ALTER TABLE cursos ADD CONSTRAINT fk_curso_tipo_cursos FOREIGN KEY (tipo_curso) REFERENCES tipos_cursos (cod_curso);
 
@@ -159,8 +159,21 @@ RETURNING *;
 SELECT *
 FROM profesores
 
+SELECT *
+FROM alumnos
+
+SELECT * 
+FROM alumnos_asisten
+
+DELETE FROM alumnos_asisten
+RETURNING *;
+
 DELETE FROM profesores
 WHERE nombre = 'Rocio'
+RETURNING *;
+
+DELETE FROM alumnos
+WHERE nombre = 'Paquito'
 RETURNING *;
 
 INSERT INTO profesores (dni, nombre, apellido, telefono, direccion)
