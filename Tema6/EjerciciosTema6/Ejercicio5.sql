@@ -63,7 +63,7 @@ CREATE TABLE tipos_cursos (
 ALTER TABLE alumnos_asisten ADD CONSTRAINT fk_alumnos_asisten_alumnos FOREIGN KEY (dni) REFERENCES alumnos (dni);
 ALTER TABLE alumnos ADD CONSTRAINT fk_alumnos_empresas FOREIGN KEY (empresa) REFERENCES empresas (cif);
 ALTER TABLE alumnos_asisten ADD CONSTRAINT fk_alumnos_asisten_curso FOREIGN KEY (n_concreto) REFERENCES cursos (n_concreto); 
-ALTER TABLE cursos ADD CONSTRAINT fk_cursos_profesores FOREIGN KEY (dni_profesor) REFERENCES profesores (dni);
+ALTER TABLE cursos ADD CONSTRAINT fk_cursos_profesores FOREIGN KEY (dni_profesor) REFERENCES profesores (dni) ON DELETE SET NULL;
 ALTER TABLE cursos ADD CONSTRAINT fk_curso_tipo_cursos FOREIGN KEY (tipo_curso) REFERENCES tipos_cursos (cod_curso);
 
 
@@ -149,4 +149,19 @@ VALUES 	('12457896J','Manuel','Rodriguez Franco','668741987','Calle sevilla nº1
 RETURNING *;
 	 
 UPDATE alumnos SET nombre = 'Lucas'
-WHERE nombre = 'Jose';
+WHERE nombre = 'Jose'
+RETURNING *;
+
+UPDATE profesores SET nombre = 'Rocio'
+WHERE nombre = 'Pol'
+RETURNING *;
+
+SELECT *
+FROM profesores
+
+DELETE FROM profesores
+WHERE nombre = 'Rocio'
+RETURNING *;
+
+INSERT INTO profesores (dni, nombre, apellido, telefono, direccion)
+VALUES ('25874156G','Pedro','Cuadrado Furioso','658963214','Calle Circulo nº32')
